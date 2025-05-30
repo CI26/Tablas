@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Erick Martinez</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-image: url('img/fondo1.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 50px auto;
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+      text-align: center;
+    }
+
+    h1 {
+      color: #2D9C17;
+      font-family: Courier, monospace;
+    }
+
+    select {
+      font-size: 16px;
+      padding: 5px;
+      margin-top: 10px;
+    }
+
+    .info-container {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 20px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+
+    #img {
+      max-width: 260px;
+      height: auto;
+      border: 4px solid #000;
+      border-radius: 10px;
+      display: none;
+    }
+
+    .description {
+      max-width: 400px;
+      font-size: 18px;
+      color: #444;
+      text-align: left;
+      display: none;
+    }
+
+    footer {
+      text-align: right;
+      font-size: 14px;
+      margin-top: 30px;
+      color: #555;
+    }
+
+    @media (max-width: 700px) {
+      .info-container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .description {
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1><b>Erick Martinez</b></h1>
+    <hr><br>
+
+    <label for="varFV"><strong>Maestros:</strong></label>
+    <select name="selecciona" id="varFV" onchange="FV()">
+      <option value="0" selected>Seleccionar</option>
+      <option value="1">Alondra Zavala</option>
+      <option value="2">Rogelio Adrian</option>
+      <option value="3">Exay Arizona</option>
+      <option value="4">Maria de los Angeles</option>
+      <option value="5">Soto Nevares</option>
+    </select>
+
+    <div class="info-container" id="infoSection">
+      <img id="img" src="">
+      <p class="description" id="imprimir"></p>
+    </div>
+
+    <footer>
+      Erick Martinez
+    </footer>
+  </div>
+
+  <script type="text/javascript">
+    function FV() {
+      const select = document.getElementById('varFV');
+      const img = document.getElementById('img');
+      const desc = document.getElementById('imprimir');
+
+      const data = {
+        1: {
+          img: "img/imagen1.jpg",
+          desc: "Programación básica: lógica, variables, ciclos y estructuras condicionales."
+        },
+        2: {
+          img: "img/imagen2.jpg",
+          desc: "Ciencias Sociales es una disciplina académica que estudia al ser humano en sociedad. Su objetivo principal es entender cómo las personas se organizan, interactúan, piensan, se desarrollan y se gobiernan dentro de estructuras sociales, políticas y económicas."
+        },
+        3: {
+          img: "img/imagen3.jpg",
+          desc: "Matemáticas es la ciencia que estudia los números, las formas, los patrones y las relaciones entre ellos. Su objetivo principal es resolver problemas mediante el razonamiento lógico, la abstracción y el análisis estructurado."
+        },
+        4: {
+          img: "img/imagen4.jpg",
+          desc: "La Historia es la ciencia que estudia los hechos y procesos del pasado de la humanidad. Ayuda a entender cómo han evolucionado las sociedades, culturas, gobiernos y civilizaciones, y cómo esos eventos influyen en nuestro presente. Se enfoca en analizar causas, consecuencias y conexiones entre distintos momentos históricos."
+        },
+        5: {
+          img: "img/imagen5.jpg",
+          desc: "El Inglés es una lengua extranjera que se enseña como herramienta de comunicación global. Su aprendizaje incluye comprensión lectora, escritura, expresión oral y auditiva. Es fundamental para el acceso a información internacional, tecnología, ciencia y oportunidades laborales.."
+        }
+      };
+
+      const selected = select.value;
+      if (data[selected]) {
+        img.src = data[selected].img;
+        img.style.display = "block";
+        desc.textContent = data[selected].desc;
+        desc.style.display = "block";
+      } else {
+        img.style.display = "none";
+        desc.textContent = "";
+        desc.style.display = "none";
+      }
+    }
+  </script>
+</body>
+</html>
